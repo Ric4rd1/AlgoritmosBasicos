@@ -1,0 +1,1 @@
+g++ unit.h exception.h stack.h main.cpp -o stack

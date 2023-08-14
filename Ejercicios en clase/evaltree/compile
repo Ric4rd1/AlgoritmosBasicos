@@ -1,0 +1,1 @@
+g++ unit.h exception.h evaltree.h main.cpp -o evaltree
