@@ -196,6 +196,7 @@ bool find_seq(int arr[], int size, int val) {
 }
 
 // funcion O log(n)
+// correcto O(n), ya que se toam el peor caso que puede ser el ultimo elemento
 bool find_rec(int arr[], int low, int high, int val) {
 	int mid;
 	bool aux;
@@ -231,6 +232,7 @@ int max_seq(int arr[], int size) {
 
 
 // funcion O log(n)
+// correcto O(n), ya que se toam el peor caso que puede ser el ultimo elemento
 int max_rec(int arr[], int low, int high) {
 	int mid, left, right;
 
@@ -293,6 +295,7 @@ int unimodal_rec(int arr[], int size) {
 	return unimodal_rec(arr, 0, size - 1);
 }
 
+
 int bs_seq(int arr[], int size, int val) {
 	int mid;
 	int low = 0;
@@ -327,6 +330,7 @@ int bs_aux(int arr[], int low, int high, int val) {
 	return low;
 }
 
+//O(log n)
 int bs_rec(int arr[], int size, int val) {
 	return bs_aux(arr, 0, size - 1, val);
 }

@@ -11,6 +11,7 @@
 #include "exception.h"
 #include <iostream>
 
+//O(n)
 long sum_seq(int n) {
 	long acum = 0;
 	for (int i = 1; i <= n; i++){
@@ -20,6 +21,7 @@ long sum_seq(int n) {
 	return acum;
 }
 
+//O(n)
 long sum_rec(int n) {
 	if(n==1){
 		return 1;
@@ -28,6 +30,7 @@ long sum_rec(int n) {
 	}
 }
 
+//O(n)
 long fact_seq(int n) {
 	if(n <= 0){
 		return -1;
@@ -39,6 +42,7 @@ long fact_seq(int n) {
 	return acum;
 }
 
+//O(n)
 long fact_rec(int n) {
 	if(n == 1){
 		return 1;
@@ -48,6 +52,7 @@ long fact_rec(int n) {
 	return 0;
 }
 
+//O(n)
 long fib_seq(int n) {
 	long acum = 1;
 	long temp = 1;
@@ -63,6 +68,7 @@ long fib_seq(int n) {
 	return temp;
 }
 
+//O(2^n)
 long fib_rec(int n) {
 	if(n==1||n==2){
 		return 1;
@@ -72,24 +78,55 @@ long fib_rec(int n) {
 	return 0;
 }
 
+//O(log n)
 long gcd_seq(long a, long b) {
-	return 0;
+	//std::cout<<"como estas"<<std::endl;
+	long aux;
+	while(b != 0){
+		aux = b;
+		b = a % b;
+		a = aux;
+	}
+	return a;
 }
 
+//O(log n)
 long gcd_rec(long a, long b) {
-	return 0;
+	if(b == 0){
+		//std::cout<<a<<std::endl;
+		return a;
+	} else{
+		return gcd_rec(b, a%b);
+	}
+	//return 0;
 }
 
+//O(n)
+//ciclo for con un if, el if es constante por lo tanto es O(n)
 bool find_seq(int arr[], int size, int val) {
+	for (int i = 1; i <= size; i++){
+		 if (arr[i] == val){
+			return true;
+		 }
+	}
 	return false;
 }
 
 bool find_rec(int arr[], int low, int high, int val) {
+	int mid;
+	bool aux;
 	return false;
 }
 
 int max_seq(int arr[], int size) {
-	return 0;
+	int m = arr[0];
+	// ciclo for O(n)
+	for (int i = 1; i < size; i++) {
+		if (m < arr[i]) {
+			m = arr[i];
+		}
+	}
+	return m;
 }
 
 int max_rec(int arr[], int low, int high) {
