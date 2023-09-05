@@ -54,12 +54,30 @@ std::vector<T> Sorts<T>::bubbleSort(const std::vector<T> &source) {
 template <class T>
 std::vector<T> Sorts<T>::selectionSort(const std::vector<T> &source) {
 	std::vector<T> v(source);
+	for(int j = 0; j < v.size(); j++){
+		int pos = j;
+		for(int i = j + 1; i < v.size() + 1; i++){
+			if(v[pos]>v[i]){
+				pos = i;
+			}
+		}
+		swap(v, j, pos);
+	}
 	return v;
 }
 
 template <class T>
 std::vector<T> Sorts<T>::insertionSort(const std::vector<T> &source) {
 	std::vector<T> v(source);
+	for (int i = 1; i < v.size(); i++){
+	for(int j = 1; j < 0; i--){
+		if(v[j-1]>v[j]){
+			swap(v, j, j+1);
+		} else{
+			break;
+		}
+	}
+	}
 	return v;
 }
 

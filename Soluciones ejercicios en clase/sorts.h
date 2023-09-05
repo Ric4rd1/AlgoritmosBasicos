@@ -51,13 +51,15 @@ std::vector<T> Sorts<T>::bubbleSort(const std::vector<T> &source) {
 	return v;
 }
 
+//O(n cuadrado)
 template <class T>
 std::vector<T> Sorts<T>::selectionSort(const std::vector<T> &source) {
 	std::vector<T> v(source);
 	int pos;
-
+	//O(n)
 	for (int i = v.size() - 1; i > 0; i--) {
 		pos = 0;
+		//O(n)
 		for (int j = 1; j <= i; j++) {
 			if (v[j] > v[pos]) {
 				pos = j;
