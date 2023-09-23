@@ -25,6 +25,7 @@ public:
 	std::vector<T> insertionSort(const std::vector<T>&);
 	std::vector<T> shellSort(const std::vector<T>&);
 	std::vector<T> mergeSort(const std::vector<T>&);
+	std::vector<T> quickSort(const std::vector<T>&);
 
 	std::vector<T> bucketSort(const std::vector<T>&);
 	std::list<T>   mergeList(const std::list<T>&, const std::list<T>&);
@@ -69,7 +70,14 @@ std::vector<T> Sorts<T>::selectionSort(const std::vector<T> &source) {
 template <class T>
 std::vector<T> Sorts<T>::insertionSort(const std::vector<T> &source) {
 	std::vector<T> v(source);
-	for (int i = 1; i < v.size(); i++){
+	
+	for (int i = 1; i < v.size(); i++) {
+		for (int j = i; j > 0 && v[j] < v[j - 1]; j--) {
+			swap(v, j, j - 1);
+		}
+	}
+	return v;
+	/*for (int i = 1; i < v.size(); i++){
 	for(int j = 1; j < 0; i--){
 		if(v[j-1]>v[j]){
 			swap(v, j, j+1);
@@ -79,11 +87,22 @@ std::vector<T> Sorts<T>::insertionSort(const std::vector<T> &source) {
 	}
 	}
 	return v;
+	*/
 }
 
 template <class T>
 std::vector<T> Sorts<T>::shellSort(const std::vector<T> &source) {
 	std::vector<T> v(source);
+		int gap = v.size() / 2;
+
+	while (gap > 0) {
+		for (int i = gap; i < v.size(); i++) {
+			for (int j = i; j >= gap && v[j] < v[j - gap]; j -= gap) {
+				swap(v, j, j - gap);
+			}
+		}
+		gap /= 2;
+	}
 	return v;
 }
 
@@ -121,6 +140,13 @@ std::list<T> Sorts<T>::mergeList(const std::list<T> &lst1, const std::list<T> &l
 	std::list<T> result;
 
 	return result;
+}
+
+template <class T>
+std::vector<T> Sorts<T>::quickSort(const std::vector<T> &source) {
+	std::vector<T> v(source);
+
+	return v;
 }
 
 #endif /* SORTS_H_ */

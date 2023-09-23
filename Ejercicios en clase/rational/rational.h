@@ -53,14 +53,15 @@ Rational::Rational(int num, int dem){
         numerator = num;
         denominator = dem;
     }
+	normalize();
 }
 
 int Rational::getNumerator() const {
-	return 0;
+	return numerator;
 }
 
 int Rational::getDenominator() const {
-	return 0;
+	return numerator;
 }
 
 std::string Rational::toString() const {
@@ -70,14 +71,19 @@ std::string Rational::toString() const {
 	return aux.str();
 }
 
+//operadores que me modifican a mi mismo 
+//1 parametro
 void Rational::operator= (const Rational &right) {
+	numerator = right.numerator;
+	denominator = right.numerator;
 }
 
 void Rational::operator+= (const Rational &right) {
+
 }
 
 Rational::operator double () const {
-	return 0.0;
+	return numerator/(double) denominator;
 }
 
 int gcd(int a, int b) {
@@ -92,8 +98,29 @@ int gcd(int a, int b) {
 }
 
 void Rational::normalize() {
+	//Obtener el signo y dejar numerator y denominator positivo
+	int sign = 1;
+	if (numerator < 0) {
+		sign = -1;
+		numerator = -numerator;
+	}
+	if (denominator < 0) {
+		sign = -sign;
+		denominator = -denominator;
+	}
+	if (denominator == 0) {
+		throw RangeError();
+	}
+
+	//simplificar
+	//maximo común multiplo
+	int d = gcd(numerator, denominator);
+
+	numerator   = sign * (numerator / d);
+	denominator = denominator / d;
 }
 
+//no me involucran a mi mismo, necesito 2 parametros, osea 2 objetos y devuelve un objeto nuevo
 Rational operator+ (const Rational &left, const Rational &right) {
 	return Rational();
 }
@@ -102,9 +129,11 @@ Rational operator- (const Rational &left, const Rational &right) {
 	return Rational();
 }
 
+//solo hace el objeto negativo
 Rational operator- (const Rational &right) {
 	return Rational();
 }
+
 
 bool operator== (const Rational &left, const Rational &right) {
 	return false;

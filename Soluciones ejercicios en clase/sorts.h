@@ -145,9 +145,14 @@ void Sorts<T>::mergeSplit(std::vector<T> &A, std::vector<T> &B, int low, int hig
 		return;
 	}
 	mid = (high + low) / 2;
+	//llamadas recursivas
+	//A resultado
+	//B resultado parcial
 	mergeSplit(A, B, low, mid);
 	mergeSplit(A, B, mid + 1, high);
+	//integrarlo
 	mergeArray(A, B, low, mid, high);
+	//pasarlo
 	copyArray(A, B, low, high);
 }
 
