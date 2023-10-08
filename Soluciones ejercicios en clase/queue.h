@@ -73,7 +73,7 @@ template <class T>
 bool QueueVector<T>::full() const {
 	return (counter == size);
 }
-
+	
 template <class T>
 void QueueVector<T>::enqueue(T val)  {
 	if (full()) {

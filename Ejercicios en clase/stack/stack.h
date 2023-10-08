@@ -37,14 +37,27 @@ public:
 
 template <class T>
 StackVector<T>::StackVector(unsigned int sze)  {
+	size = sze;
+	data = new T[size];
+	if (data == 0){
+		throw OutOfMemory();
+	}
+	next = 0;
 }
 
 template <class T>
 StackVector<T>::~StackVector() {
+	delete data[];
+	data = 0;
+	next = 0;
 }
 
 template <class T>
 void StackVector<T>::push(T val)  {
+	if (next == size){
+		throw Overflow();
+	}
+	data[next++] = val;	
 }
 
 template <class T>
