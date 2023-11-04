@@ -204,6 +204,7 @@ int Node<T>::max_depth() {
 	return level;
 }
 
+//checar si el arbol esta balanceado, identificar en que nodo rotar, rotar una vex, 'a' regresa el nodo padre nuevo
 template <class T>
 Node<T>* Node<T>::check_tree(T *check_val, Node<T> *parent, bool *checked) {
 	cout<< "node value " << value <<" "<< level <<" "<< balance << endl;
